@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout (~{::body})}" lang="pt-br">
+<body>
+<section>
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3 m-0" th:text="${brinquedo.nome}">Detalhe</h1>
+    <div>
+      <a class="btn btn-warning" th:href="@{'/brinquedos/' + ${brinquedo.id} + '/editar'}">Editar</a>
+      <a class="btn btn-secondary" th:href="@{/brinquedos}">Voltar</a>
+    </div>
+  </div>
+  <dl class="row">
+    <dt class="col-sm-3">Categoria</dt><dd class="col-sm-9" th:text="${brinquedo.categoria}">—</dd>
+    <dt class="col-sm-3">Idade</dt><dd class="col-sm-9"><span th:text="${brinquedo.faixaEtariaMin}"></span> a <span th:text="${brinquedo.faixaEtariaMax}"></span> anos</dd>
+    <dt class="col-sm-3">Preço</dt><dd class="col-sm-9" th:text="${#numbers.formatDecimal(brinquedo.preco, 1, 'POINT', 2, 'COMMA')}">0,00</dd>
+    <dt class="col-sm-3">Estoque</dt><dd class="col-sm-9" th:text="${brinquedo.estoque}">0</dd>
+    <dt class="col-sm-3">Marca</dt><dd class="col-sm-9" th:text="${brinquedo.marca}">—</dd>
+    <dt class="col-sm-3">Ativo</dt><dd class="col-sm-9" th:text="${brinquedo.ativo ? 'Sim' : 'Não'}">Sim</dd>
+    <dt class="col-sm-3">Descrição</dt><dd class="col-sm-9" th:text="${brinquedo.descricao}">—</dd>
+  </dl>
+</section>
+</body>
+</html>

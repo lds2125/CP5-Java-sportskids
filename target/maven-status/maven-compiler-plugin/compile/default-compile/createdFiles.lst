@@ -1,0 +1,6 @@
+br\com\fiap\sportskids\service\BrinquedoService.class
+br\com\fiap\sportskids\entity\Brinquedo$BrinquedoBuilder.class
+br\com\fiap\sportskids\repository\BrinquedoRepository.class
+br\com\fiap\sportskids\SportsKidsApplication.class
+br\com\fiap\sportskids\entity\Brinquedo.class
+br\com\fiap\sportskids\controller\BrinquedoController.class

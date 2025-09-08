@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" th:replace="layout :: layout(~{::body})">
+<body>
+
+<div th:if="${msg}" class="alert alert-success text-center mb-4" role="alert">
+  <span th:text="${msg}">Operação realizada com sucesso!</span>
+</div>
+
+<div class="card-like p-4">
+  <div class="page-header d-flex justify-content-between align-items-center mb-3">
+    <h1 class="mb-0">Brinquedos</h1>
+    <a class="btn btn-primary" th:href="@{/brinquedos/novo}">+ Novo</a>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-sm align-middle table-hover app-table">
+      <thead>
+      <tr>
+        <th style="width: 80px;">ID</th>
+        <th>Nome</th>
+        <th style="width: 220px;">Categoria</th>
+        <th style="width: 140px;">Preço</th>
+        <th style="width: 120px;">Estoque</th>
+        <th style="width: 170px;">Ações</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <!-- Sem registros -->
+      <tr th:if="${#lists.isEmpty(brinquedos)}">
+        <td colspan="6" class="text-center text-muted py-4">Sem registros</td>
+      </tr>
+
+      <!-- Com registros -->
+      <tr th:each="b : ${brinquedos}">
+        <td th:text="${b.id}">1</td>
+        <td>
+          <a th:href="@{/brinquedos/{id}(id=${b.id})}"
+             class="link-body-emphasis"
+             th:text="${b.nome}">Nome</a>
+        </td>
+        <td th:text="${b.categoria}">Categoria</td>
+        <td>
+          R$
+          <span th:text="${#numbers.formatDecimal(b.preco, 1, 'POINT', 2, 'COMMA')}">0,00</span>
+        </td>
+        <td th:text="${b.estoque}">0</td>
+
+        <td class="text-nowrap">
+          <div class="d-flex gap-2">
+            <a class="btn btn-outline-primary btn-sm"
+               th:href="@{/brinquedos/{id}/editar(id=${b.id})}">
+              Editar
+            </a>
+
+            <!-- Excluir -->
+            <form th:action="@{/brinquedos/{id}/delete(id=${b.id})}"
+                  method="post"
+                  class="d-inline"
+                  onsubmit="return confirm('Tem certeza que deseja excluir este brinquedo?');">
+
+              <input type="hidden"
+                     th:if="${_csrf != null}"
+                     th:name="${_csrf.parameterName}"
+                     th:value="${_csrf.token}" />
+
+              <button type="submit" class="btn btn-outline-danger btn-sm">
+                Excluir
+              </button>
+            </form>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</body>
+</html>

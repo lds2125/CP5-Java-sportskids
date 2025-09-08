@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout (~{::body})}" lang="pt-br">
+<body>
+<section>
+  <h1 class="h3 mb-3" th:text="${brinquedo.id} != null ? 'Editar Brinquedo' : 'Novo Brinquedo'">Form</h1>
+  <form th:action="${brinquedo.id} != null ? @{'/brinquedos/' + ${brinquedo.id}} : @{/brinquedos}" method="post" th:object="${brinquedo}">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label">Nome *</label>
+        <input class="form-control" th:field="*{nome}"/>
+        <div class="invalid-feedback d-block" th:errors="*{nome}"></div>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Categoria *</label>
+        <input class="form-control" th:field="*{categoria}"/>
+        <div class="invalid-feedback d-block" th:errors="*{categoria}"></div>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Idade Min *</label>
+        <input type="number" class="form-control" th:field="*{faixaEtariaMin}"/>
+        <div class="invalid-feedback d-block" th:errors="*{faixaEtariaMin}"></div>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Idade Max *</label>
+        <input type="number" class="form-control" th:field="*{faixaEtariaMax}"/>
+        <div class="invalid-feedback d-block" th:errors="*{faixaEtariaMax}"></div>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Preço *</label>
+        <input type="number" step="0.01" class="form-control" th:field="*{preco}"/>
+        <div class="invalid-feedback d-block" th:errors="*{preco}"></div>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Estoque *</label>
+        <input type="number" class="form-control" th:field="*{estoque}"/>
+        <div class="invalid-feedback d-block" th:errors="*{estoque}"></div>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Marca</label>
+        <input class="form-control" th:field="*{marca}"/>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Ativo</label>
+        <select class="form-select" th:field="*{ativo}">
+          <option th:value="true">Sim</option>
+          <option th:value="false">Não</option>
+        </select>
+      </div>
+      <div class="col-12">
+        <label class="form-label">Descrição</label>
+        <textarea class="form-control" rows="3" th:field="*{descricao}"></textarea>
+      </div>
+    </div>
+    <div class="mt-4 d-flex gap-2">
+      <button class="btn btn-primary">Salvar</button>
+      <a class="btn btn-secondary" th:href="@{/brinquedos}">Voltar</a>
+    </div>
+  </form>
+</section>
+</body>
+</html>

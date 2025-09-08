@@ -1,0 +1,99 @@
+
+:root{
+  --brand:#0d6efd;
+  --bg:#f6f7f9;
+  --card:#ffffff;
+  --text:#1f2937;
+  --muted:#6b7280;
+  --border:#e5e7eb;
+  --shadow: 0 6px 18px rgba(0,0,0,.06);
+}
+
+html,body{height:100%}
+body{
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.app-header{
+  background: var(--brand);
+  color:#fff;
+  padding: 28px 0 56px;
+}
+
+.app-header .brand{
+  color:#fff;
+  font-weight:700;
+  text-decoration:none;
+  font-size:1.125rem;
+}
+.app-header .nav-link{
+  color:#e8eeff;
+  text-decoration:none;
+}
+.app-header .nav-link:hover{ color:#fff; text-decoration:underline; }
+
+.app-footer{
+  background: transparent;
+  border-top: 1px solid var(--border);
+  margin-top: 32px;
+}
+
+.card-like{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  margin-top: -40px;
+}
+
+.page-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.page-header h1{
+  font-size: 1.35rem;
+  margin:0;
+}
+
+.app-table{
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.app-table thead th{
+  font-weight:600;
+  color:#111827;
+  background:#f9fafb;
+  border-bottom:1px solid var(--border);
+}
+
+.app-table tbody td{
+  border-top: 1px solid var(--border);
+}
+
+.app-table tbody tr:hover td{
+  background:#fbfdff;
+}
+
+.form-label{ font-weight:600; }
+.input-group-text{ background:#f3f4f6; }
+
+.is-invalid{
+  border-color:#dc3545 !important;
+}
+.invalid-feedback{ display:block; }
+
+.link-body-emphasis{
+  color:inherit;
+  text-decoration:none;
+}
+.link-body-emphasis:hover{
+  color:var(--brand);
+  text-decoration:underline;
+}
